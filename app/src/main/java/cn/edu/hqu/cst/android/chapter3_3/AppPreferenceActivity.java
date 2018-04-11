@@ -15,38 +15,41 @@ import java.util.List;
 public class AppPreferenceActivity extends PreferenceActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(hasHeaders()){
-            Button button=new Button(this);
+        if (hasHeaders()) {
+            Button button = new Button(this);
             button.setText("设置操作");
             setListFooter(button);
         }
     }
 
     @Override
-    public void onBuildHeaders(List<Header> target){
-        loadHeadersFromResource(R.xml.preference_headers,target);
+    public void onBuildHeaders(List<Header> target) {
+        loadHeadersFromResource(R.xml.preference_headers, target);
     }
+
     @Override
-    public boolean isValidFragment(String fragmentName){
+    public boolean isValidFragment(String fragmentName) {
         return true;
     }
 
-    public static class Preference1Fragment extends PreferenceFragment{
+    public static class Preference1Fragment extends PreferenceFragment {
         @Override
-        public void onCreate(Bundle savedInstanceState){
+        public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.preferences);
         }
     }
-    public static class Preference2Fragment extends PreferenceFragment{
+
+    public static class Preference2Fragment extends PreferenceFragment {
         @Override
-        public void onCreate(Bundle savedInstanceState){
+        public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.displaypreferences);
-            String website="http://www.cst.hqu.edu.cn";//getArguments().getString("website");
-            Toast.makeText(getActivity(),"网站："+website,Toast.LENGTH_LONG).show();
+            //通过XML文件传入website参数
+            String website = getArguments().getString("website");
+            Toast.makeText(getActivity(), "网站：" + website, Toast.LENGTH_LONG).show();
         }
     }
 }

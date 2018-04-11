@@ -21,21 +21,21 @@ public class DeviceListActivity extends ExpandableListActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ExpandableListAdapter adapter=new BaseExpandableListAdapter() {
-            int[] logos=new int[]{
+        ExpandableListAdapter adapter = new BaseExpandableListAdapter() {
+            int[] logos = new int[]{
                     R.drawable.ic_computer_black_24dp,
                     R.drawable.ic_phone_android_black_24dp,
                     R.drawable.ic_speaker_black_24dp
             };
-            private String[] DeviceTypes=new String[]{
+            private String[] DeviceTypes = new String[]{
                     "计算机",
                     "移动终端",
                     "外设"
             };
-            private String[][] Devices=new String[][]{
-                {"笔记本","台式机","大型服务器"},
-                {"手机","平板","智能手表"},
-                {"键盘","鼠标","喇叭"}
+            private String[][] Devices = new String[][]{
+                    {"笔记本", "台式机", "大型服务器"},
+                    {"手机", "平板", "智能手表"},
+                    {"键盘", "鼠标", "喇叭"}
             };
 
             @Override
@@ -75,12 +75,12 @@ public class DeviceListActivity extends ExpandableListActivity {
 
             @Override
             public View getGroupView(int groupPosition, boolean isExpanded, View view, ViewGroup viewGroup) {
-                LinearLayout linearLayout=new LinearLayout(DeviceListActivity.this);
+                LinearLayout linearLayout = new LinearLayout(DeviceListActivity.this);
                 linearLayout.setOrientation(LinearLayout.HORIZONTAL);
-                ImageView logo=new ImageView(DeviceListActivity.this);
+                ImageView logo = new ImageView(DeviceListActivity.this);
                 logo.setImageResource(logos[groupPosition]);
                 linearLayout.addView(logo);
-                TextView txtView=getTextView();
+                TextView txtView = getTextView();
                 txtView.setText(getGroup(groupPosition).toString());
                 linearLayout.addView(txtView);
                 return linearLayout;
@@ -88,8 +88,8 @@ public class DeviceListActivity extends ExpandableListActivity {
 
             @Override
             public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View view, ViewGroup viewGroup) {
-                TextView txtView=getTextView();
-                txtView.setText(getChild(groupPosition,childPosition).toString());
+                TextView txtView = getTextView();
+                txtView.setText(getChild(groupPosition, childPosition).toString());
                 return txtView;
             }
 
@@ -97,12 +97,13 @@ public class DeviceListActivity extends ExpandableListActivity {
             public boolean isChildSelectable(int i, int i1) {
                 return true;
             }
-            private TextView getTextView(){
-                AbsListView.LayoutParams lp=new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,64);
-                TextView textView=new TextView(DeviceListActivity.this);
+
+            private TextView getTextView() {
+                AbsListView.LayoutParams lp = new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 64);
+                TextView textView = new TextView(DeviceListActivity.this);
                 textView.setLayoutParams(lp);
-                textView.setGravity(Gravity.CENTER_VERTICAL|Gravity.LEFT);
-                textView.setPadding(36,0,0,0);
+                textView.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);
+                textView.setPadding(36, 0, 0, 0);
                 textView.setTextSize(20);
                 return textView;
 
