@@ -44,28 +44,28 @@ public class DeviceListActivity extends ExpandableListActivity {
             }
 
             @Override
-            public int getChildrenCount(int i) {
-                return Devices[i].length;
+            public int getChildrenCount(int groupPosition) {
+                return Devices[groupPosition].length;
             }
 
             @Override
-            public Object getGroup(int i) {
-                return DeviceTypes[i];
+            public Object getGroup(int groupPosition) {
+                return DeviceTypes[groupPosition];
             }
 
             @Override
-            public Object getChild(int i, int i1) {
-                return Devices[i][i1];
+            public Object getChild(int groupPositon, int childPosition) {
+                return Devices[groupPositon][childPosition];
             }
 
             @Override
-            public long getGroupId(int i) {
-                return i;
+            public long getGroupId(int groupPosition) {
+                return groupPosition;
             }
 
             @Override
-            public long getChildId(int i, int i1) {
-                return i1;
+            public long getChildId(int groupPosition, int childPosition) {
+                return childPosition;
             }
 
             @Override
